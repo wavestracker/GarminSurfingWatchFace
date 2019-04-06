@@ -1,31 +1,32 @@
 using Toybox.System as Sys;
 using Toybox.Graphics as Gfx;
+using Toybox.Lang;
 
 module Battery {
 
-    function drawArc(dc, cx, cy) {
-        dc.setPenWidth(3);
-        dc.setColor(Gfx.COLOR_GREEN,Gfx.COLOR_TRANSPARENT);
+    function drawIcon(dc, cx, bottom_y) {
+        var battery = Sys.getSystemStats().battery;
+        var width=43;
+        var height=16;
+        var cy = bottom_y-height-1/2;  // -1 because the screen is rounded.
+        var xStart= cx-width/2;
+        var yStart= cy-height/2;
 
-        var battery = getBattery();
+        dc.setPenWidth(1);
+        dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
+        dc.drawRectangle(xStart, yStart, width, height);
+        dc.fillRectangle(xStart, yStart, width, height);
+        dc.fillRectangle(xStart + width - 1, yStart + 6, 3, height - 12);
 
-        if (battery <= 50) {
-            dc.setPenWidth(5);
-            dc.setColor(Gfx.COLOR_ORANGE, Gfx.COLOR_TRANSPARENT);
-        }
-        if (battery <= 30) {
-            dc.setPenWidth(10);
+
+        if(battery<=20){
             dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
+        } else {
+            dc.setColor(Gfx.COLOR_BLACK, Gfx.COLOR_TRANSPARENT);
         }
+ 
+        dc.drawText(cx, yStart - 3, Gfx.FONT_XTINY, Lang.format("$1$%", [battery.format("%d")]), Gfx.TEXT_JUSTIFY_CENTER);
 
-        var angle_battery = battery * 360 / 100;
-        if (angle_battery > 0) {
-            dc.drawArc(cx, cy, cy, Gfx.ARC_CLOCKWISE, 90, (360 - angle_battery.toLong() + 90) % 360);
-        }
-    }
-
-    function getBattery() {
-        return Sys.getSystemStats().battery;
     }
 
 }

@@ -45,6 +45,7 @@ class SurfWatchFaceView extends Ui.WatchFace {
         Date.drawText(dc, center_x, 35);
         Time.drawText(dc, center_x, center_y);
         Status.drawText(dc, center_x, center_y);
+        Battery.drawIcon(dc, center_x, dc.getHeight());
 
         // Alarms ON.
         if (Alarms.areAlarms()) {

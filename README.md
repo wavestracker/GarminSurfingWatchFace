@@ -10,9 +10,11 @@ Garmin Connect IQ Watch Face, you can install through Garmin app store.
 - alarm icon
 - animation for tide
 - white text goes dark if device is in Sleep mode or Do Not Disturb state.
+- batery
 
 ## TODO
-- batery
+- Convert images to fonts
+- Use different font (smaller)
 - wind
 - Get tide from webservice
 - arrow icon for tide going up or down
