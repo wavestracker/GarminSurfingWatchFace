@@ -1,5 +1,5 @@
 <resources>
     <fonts>
-        <font id="id_font_myFont" filename="myFont.fnt"/>
+        <font id="numbers_font" filename="numbers.fnt" />
     </fonts>
 </resources>
