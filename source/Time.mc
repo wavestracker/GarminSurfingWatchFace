@@ -30,7 +30,7 @@ module Time {
     function drawTimeWithWaterLevel(dc, x, y, text, value, color) {
         x -= 4; // Fix padding
         var text_width = dc.getTextWidthInPixels(text, Utils.getFont());
-        var text_height = 90; // dc.getFontHeight(Utils.getFont());
+        var text_height = 90;
         var limit = normalizeHeight(value, text_height);
         var font = Utils.getFont();
         var colorBack = Utils.getColorMode();

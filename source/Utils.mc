@@ -8,7 +8,7 @@ module Utils {
 
     function getFont() {
         if (myFont == null) {
-            myFont = Ui.loadResource(Rez.Fonts.id_font_myFont);
+            myFont = Ui.loadResource(Rez.Fonts.numbers_font);
         }
         return myFont;
     }
