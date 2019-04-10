@@ -1,5 +1,6 @@
 <resources>
     <fonts>
         <font id="numbers_font" filename="numbers.fnt" />
+        <font id="icons_font" filename="icons_20.fnt" antialias="true" />
     </fonts>
 </resources>
