@@ -69,7 +69,7 @@ class SurfWatchFaceView extends Ui.WatchFace {
         }
         // is DND ON.
         if (DoNotDisturb.isDND()) {
-            DoNotDisturb.drawIcon(dc, center_x-55, 15);
+            DoNotDisturb.drawIcon(dc, center_x-42, 15, icons_font);
             add_padding_to_date = true;
         }
         Date.drawText(dc, center_x, add_padding_to_date ? 50 : 45);

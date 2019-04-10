@@ -1,5 +1,4 @@
 <drawables>
     <bitmap id="LauncherIcon" filename="launcher_icon.png" />
     <bitmap id="alarms" filename="alarms.png" />
-    <bitmap id="dnd" filename="dnd.png" />
 </drawables>

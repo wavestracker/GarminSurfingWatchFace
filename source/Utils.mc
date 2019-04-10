@@ -25,7 +25,7 @@ module Utils {
 
     var heart = "h";
 
-    // var moon = "m";
+    var moon = "m";
 
     // var phone = "p";
 

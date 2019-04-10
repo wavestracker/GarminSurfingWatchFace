@@ -5,10 +5,9 @@ using Toybox.ActivityMonitor as Act;
 
 module DoNotDisturb {
 
-    var bitmap = Ui.loadResource(Rez.Drawables.dnd);
-
-    function drawIcon(dc, x, y) {
-        dc.drawBitmap(x, y, bitmap);
+    function drawIcon(dc, x, y, font) {
+        dc.setColor(Utils.getColorMode(), Gfx.COLOR_TRANSPARENT);
+        dc.drawText(x, y, font, Utils.moon, Gfx.TEXT_JUSTIFY_CENTER);
     }
 
     function isDND() {
