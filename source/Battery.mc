@@ -13,7 +13,7 @@ module Battery {
         var yStart= cy-height/2;
 
         dc.setPenWidth(1);
-        dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(Utils.getColorMode(), Gfx.COLOR_TRANSPARENT);
         dc.drawRectangle(xStart, yStart, width, height);
         dc.fillRectangle(xStart, yStart, width, height);
         dc.fillRectangle(xStart + width - 1, yStart + 6, 3, height - 12);
