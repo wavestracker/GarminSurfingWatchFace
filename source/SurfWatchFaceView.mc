@@ -40,28 +40,35 @@ class SurfWatchFaceView extends Ui.WatchFace {
         icons_font = Ui.loadResource(Rez.Fonts.icons_font);
     }
 
+    function onPartialUpdate(dc) {
+        // Function called once a second even in low-power mode.
+
+    }
+
     // Update the view.
     function onUpdate(dc) {
         // reset screen.
         dc.setColor(Gfx.COLOR_BLACK, Gfx.COLOR_BLACK);
         dc.clear();
 
-        Date.drawText(dc, center_x, 45);
+        Date.drawText(dc, center_x, 50);
         Time.drawText(dc, center_x, center_y, numbers_font);
+
+        // Draw heart rate.
+        if (HeartRate.hrON()) {
+             HeartRate.drawText(dc, center_x, 3, icons_font);
+        }
+
         Calories.drawText(dc, center_x-25, 206, icons_font);
         Battery.drawIcon(dc, center_x, dc.getHeight());
 
         // Alarms ON.
         if (Alarms.areAlarms()) {
-            Alarms.drawIcon(dc, center_x + 50, 25);
+            Alarms.drawIcon(dc, center_x + 50, 15);
         }
         // is DND ON.
         if (DoNotDisturb.isDND()) {
-            DoNotDisturb.drawIcon(dc, center_x-65, 25);
-        }
-        // Draw heart rate.
-        if (HeartRate.hrON()) {
-             HeartRate.drawText(dc, center_x, 5, icons_font);
+            DoNotDisturb.drawIcon(dc, center_x-55, 15);
         }
 
         // TODO: Battery.
