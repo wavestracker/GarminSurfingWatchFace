@@ -12,7 +12,7 @@ module Utils {
     // var battery1 = "$";
     // var battery2 = "%";
     // var battery3 = "&";
-    // var bell = "b";
+    var bell = "b";
     // var bluethooth = "z";
     // var bolt = "B";
 

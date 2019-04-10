@@ -64,7 +64,7 @@ class SurfWatchFaceView extends Ui.WatchFace {
         // Alarms ON.
         var add_padding_to_date = false;
         if (Alarms.areAlarms()) {
-            Alarms.drawIcon(dc, center_x + 50, 15);
+            Alarms.drawIcon(dc, center_x + 58, 15, icons_font);
             add_padding_to_date = true;
         }
         // is DND ON.
