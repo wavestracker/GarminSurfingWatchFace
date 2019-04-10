@@ -7,6 +7,7 @@ class SurfWatchFaceView extends Ui.WatchFace {
     hidden var center_y;
     // TODO: investigate what is this active var.
     hidden var active;
+    hidden var numbers_font;
 
     function initialize() {
         WatchFace.initialize();
@@ -34,6 +35,7 @@ class SurfWatchFaceView extends Ui.WatchFace {
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() {
+        numbers_font = Ui.loadResource(Rez.Fonts.numbers_font);
     }
 
     // Update the view.
@@ -43,7 +45,7 @@ class SurfWatchFaceView extends Ui.WatchFace {
         dc.clear();
 
         Date.drawText(dc, center_x, 30);
-        Time.drawText(dc, center_x, center_y);
+        Time.drawText(dc, center_x, center_y, numbers_font);
         Status.drawText(dc, center_x, center_y);
         Battery.drawIcon(dc, center_x, dc.getHeight());
 
@@ -75,6 +77,7 @@ class SurfWatchFaceView extends Ui.WatchFace {
     // state of this View here. This includes freeing resources from
     // memory.
     function onHide() {
+        numbers_font = null;
     }
 
 }

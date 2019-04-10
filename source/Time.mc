@@ -6,7 +6,7 @@ using Toybox.Math as Mt;
 
 module Time {
 
-    function drawText(dc, cx, cy) {
+    function drawText(dc, cx, cy, font) {
         var moment = Time.now();
         var date = Gre.info(moment, Time.FORMAT_LONG);
         var hourString = date.hour.format("%02d");
@@ -16,7 +16,8 @@ module Time {
         var activePercent = 50;
 
         var text = hourString + ":" + minuteString;
-        drawTimeWithWaterLevel(dc, cx, cy, text, activePercent, Gfx.COLOR_BLUE);
+        drawTimeWithWaterLevel(
+            dc, cx, cy, text, activePercent, Gfx.COLOR_BLUE, font);
     }
 
     function normalizeHeight(value, goal) {
@@ -27,12 +28,11 @@ module Time {
         return r;
     }
 
-    function drawTimeWithWaterLevel(dc, x, y, text, value, color) {
+    function drawTimeWithWaterLevel(dc, x, y, text, value, color, font) {
         x -= 4; // Fix padding
-        var text_width = dc.getTextWidthInPixels(text, Utils.getFont());
+        var text_width = dc.getTextWidthInPixels(text, font);
         var text_height = 90;
         var limit = normalizeHeight(value, text_height);
-        var font = Utils.getFont();
         var colorBack = Utils.getColorMode();
         var wave_height = 6;
         var wave_width = 4;
