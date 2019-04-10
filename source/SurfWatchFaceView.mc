@@ -61,7 +61,7 @@ class SurfWatchFaceView extends Ui.WatchFace {
         }
         // Draw heart rate.
         if (HeartRate.hrON()) {
-             HeartRate.drawText(dc, center_x, 5);
+             HeartRate.drawText(dc, center_x, 5, icons_font);
         }
 
         // TODO: Battery.
