@@ -51,7 +51,6 @@ class SurfWatchFaceView extends Ui.WatchFace {
         dc.setColor(Gfx.COLOR_BLACK, Gfx.COLOR_BLACK);
         dc.clear();
 
-        Date.drawText(dc, center_x, 50);
         Time.drawText(dc, center_x, center_y, numbers_font);
 
         // Draw heart rate.
@@ -63,13 +62,17 @@ class SurfWatchFaceView extends Ui.WatchFace {
         Battery.drawIcon(dc, center_x, dc.getHeight());
 
         // Alarms ON.
+        var add_padding_to_date = false;
         if (Alarms.areAlarms()) {
             Alarms.drawIcon(dc, center_x + 50, 15);
+            add_padding_to_date = true;
         }
         // is DND ON.
         if (DoNotDisturb.isDND()) {
             DoNotDisturb.drawIcon(dc, center_x-55, 15);
+            add_padding_to_date = true;
         }
+        Date.drawText(dc, center_x, add_padding_to_date ? 50 : 45);
 
         // TODO: Battery.
         // TODO: Alarms.
