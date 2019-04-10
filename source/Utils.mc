@@ -54,9 +54,6 @@ module Utils {
 
     function getColorMode() {
         if (DoNotDisturb.isDND()) {
-            return Gfx.COLOR_DK_GRAY;
-        }
-        else if (DoNotDisturb.isSleepy()) {
             return Gfx.COLOR_LT_GRAY;
         }
         else {

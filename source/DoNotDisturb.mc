@@ -19,10 +19,4 @@ module DoNotDisturb {
         }
     }
 
-    function isSleepy() {
-        var info = Act.getInfo();
-
-        return info.isSleepMode;
-    }
-
 }
