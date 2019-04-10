@@ -46,7 +46,7 @@ class SurfWatchFaceView extends Ui.WatchFace {
         dc.setColor(Gfx.COLOR_BLACK, Gfx.COLOR_BLACK);
         dc.clear();
 
-        Date.drawText(dc, center_x, 30);
+        Date.drawText(dc, center_x, 45);
         Time.drawText(dc, center_x, center_y, numbers_font);
         Calories.drawText(dc, center_x-25, 206, icons_font);
         Battery.drawIcon(dc, center_x, dc.getHeight());
