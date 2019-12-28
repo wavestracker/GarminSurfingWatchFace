@@ -5,8 +5,7 @@ class SurfWatchFaceView extends Ui.WatchFace {
 
     hidden var center_x;
     hidden var center_y;
-    // TODO: investigate what is this active var.
-    hidden var active;
+    hidden var previous_heart_rate = 0;
     hidden var numbers_font;
     hidden var icons_font;
 
@@ -15,18 +14,15 @@ class SurfWatchFaceView extends Ui.WatchFace {
     }
 
     function onExitSleep() {
-        active = true;
-        Ui.requestUpdate();
+        // Ui.requestUpdate();
     }
 
     function onEnterSleep() {
-        active = false;
         Ui.requestUpdate();
     }
 
     // Load your resources here.
     function onLayout(dc) {
-
         // Center spot.
         center_x = dc.getWidth() / 2;
         center_y = dc.getHeight() / 2;
@@ -42,7 +38,12 @@ class SurfWatchFaceView extends Ui.WatchFace {
 
     function onPartialUpdate(dc) {
         // Function called once a second even in low-power mode.
-
+        var heartRate = HeartRate.getValue();
+        if (heartRate != previous_heart_rate){
+            dc.setClip()
+            HeartRate.drawText(dc, center_x, 3, heartRate);
+            previous_heart_rate = heartRate;
+        }
     }
 
     // Update the view.
@@ -55,7 +56,7 @@ class SurfWatchFaceView extends Ui.WatchFace {
 
         // Draw heart rate.
         if (HeartRate.hrON()) {
-             HeartRate.drawText(dc, center_x, 3, icons_font);
+             HeartRate.draw(dc, center_x, 3, icons_font);
         }
 
         Calories.drawText(dc, center_x-25, 206, icons_font);
@@ -93,4 +94,18 @@ class SurfWatchFaceView extends Ui.WatchFace {
         icons_font = null;
     }
 
+}
+
+
+class PartialDelegate extends Ui.WatchFaceDelegate
+{
+
+    function initialize() {
+        WatchFaceDelegate.initialize();
+    }
+
+    function onPowerBudgetExceeded(powerInfo) {
+        Sys.println("Average execution time: " + powerInfo.executionTimeAverage);
+        Sys.println("Allowed execution time: " + powerInfo.executionTimeLimit);
+    }
 }
